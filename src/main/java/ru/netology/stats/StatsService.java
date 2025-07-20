@@ -11,10 +11,8 @@ public class StatsService {
     }
 
     public long averageSales(long[] sales) {
-        long sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
+        long sum = sumSales(sales); // используем готовый метод
+
         return sum / sales.length; // вывод среднего за месяц
     }
 
@@ -43,15 +41,11 @@ public class StatsService {
     }
 
     public int countMonthsAboveAverage(long[] sales) {
-        long sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
-         long averages = sum / sales.length;
+        long average =  averageSales(sales);
 
         int count = 0; // счётчик месяцев выше среднего
         for (long sale : sales) {
-            if (sale > averages) {
+            if (sale > average) {
                 count++;
             }
         }
@@ -59,15 +53,11 @@ public class StatsService {
     }
 
     public int countMonthsBelowAverage(long[] sales) {
-        long sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
-        long averages = sum / sales.length;
+        long average = averageSales(sales);
 
         int count = 0; // счётчик месяцев ниже среднего
         for (long sale : sales) {
-            if (sale < averages) {
+            if (sale < average) {
                 count++;
             }
         }
